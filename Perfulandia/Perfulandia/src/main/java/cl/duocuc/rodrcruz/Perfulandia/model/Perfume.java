@@ -15,7 +15,7 @@ public class Perfume {
 
     private String name;
 
-    private int cantity;
+    private int quantity;
 
     private String brand;
 
