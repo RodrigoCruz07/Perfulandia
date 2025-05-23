@@ -1,14 +1,28 @@
 package cl.duocuc.rodrcruz.Perfulandia.model;
-import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
-@Table(name="User")
+import java.util.Date;
+
+
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+
 public class User {
+    private int id;
+
+    private String name;
+
+    private String lastname;
+
+    private int age;
+
+    private String email;
+
+    private String phone;
+
+    private Date registrationDate;
+
 }
