@@ -11,12 +11,8 @@ import jakarta.persistence.*;
 public class Perfume {
 
     private int id;
-
-
     private String name;
-
     private int quantity;
-
     private String brand;
 
 }
