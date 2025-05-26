@@ -21,7 +21,8 @@ public class SellerRepository {
         sellers.add(new Seller(10, "Elena", "Vargas", 26, "Calle Jardín 101", "555-5050", "elena.vargas@email.com", "Vendedor"));
 
     }
-    public List<Seller> getSellers() {
+    public List<Seller> getAllSellers() {
+
         return sellers;
     }
 }
