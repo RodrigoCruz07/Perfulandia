@@ -24,7 +24,7 @@ public class PerfumeController {
         //Listar Perfumes
         @GetMapping
         public ResponseEntity <List<PerfumeResponse>> getAllPerfumes() {
-            List<Perfume> perfumes = perfumeService.getAllPerfumes();
+            List<Perfume> perfumes = perfumeService.findAll();
             List<PerfumeResponse> response = perfumes.stream()
                     .map(this::convertToResponse)
                     .collect(Collectors.toList());
@@ -34,7 +34,7 @@ public class PerfumeController {
         //Buscar perfume por ID
         @GetMapping("/{id}")
         public ResponseEntity<PerfumeResponse> getPerfumeById(@PathVariable int id) {
-        Optional<Perfume> perfume = perfumeService.getPerfumeById(id);
+        Optional<Perfume> perfume = perfumeService.findById(id);
         return perfume.map(value -> new ResponseEntity<>(convertToResponse(value),
                 HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
@@ -43,7 +43,10 @@ public class PerfumeController {
         //buscar perfume por nombre
         @GetMapping("/search")
         public ResponseEntity<List<PerfumeResponse>> getPerfumeByName(@RequestParam String name) {
-        List<Perfume> perfumes = perfumeService.getPerfumeByName(name);
+        List<Perfume> perfumes = perfumeService.findByName(name);
+        if (perfumes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         List<PerfumeResponse> response = perfumes.stream()
                 .map(this::convertToResponse)
                 .collect(Collectors.toList());
@@ -70,7 +73,7 @@ public class PerfumeController {
         //Eliminar perfume
         @DeleteMapping("/{id}")
         public ResponseEntity<Void> deletePerfume (@PathVariable int id) {
-        boolean deleted = perfumeService.deletePerfume(id);
+        boolean deleted = perfumeService.deleteById(id);
         return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
                         : new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -82,6 +85,7 @@ public class PerfumeController {
         response.setId(perfume.getId());
         response.setName(perfume.getName());
         response.setQuantity(perfume.getQuantity());
+        response.setPrice(perfume.getPrice());
         response.setBrand(perfume.getBrand());
         return response;
 
@@ -93,6 +97,15 @@ public class PerfumeController {
         perfume.setQuantity(request.getQuantity());
         perfume.setBrand(request.getBrand());
         return perfume;
+    }
+    @PatchMapping("/{idperfum}/quantity")
+    public ResponseEntity<PerfumeResponse> updatequantity (@PathVariable int idperfum, @RequestParam int quantity) {
+        Optional<Perfume> updated = perfumeService.updateQuantity(idperfum, quantity);
+        if(updated.isPresent()) {
+            return new ResponseEntity<>(convertToResponse(updated.get()), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 

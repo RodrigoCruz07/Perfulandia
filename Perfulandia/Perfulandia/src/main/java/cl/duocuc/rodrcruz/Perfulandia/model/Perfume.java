@@ -7,12 +7,13 @@ import jakarta.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
 public class Perfume {
 
     private int id;
     private String name;
     private int quantity;
+    private double price;
     private String brand;
 
 }

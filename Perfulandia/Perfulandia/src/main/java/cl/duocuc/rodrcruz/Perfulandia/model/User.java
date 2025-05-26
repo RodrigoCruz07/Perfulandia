@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
 public class User {
     private int id;
 
@@ -27,6 +27,5 @@ public class User {
 
     private Date registrationDate;
 
-    private List<Purchase> purchases = new ArrayList<>();
 
 }

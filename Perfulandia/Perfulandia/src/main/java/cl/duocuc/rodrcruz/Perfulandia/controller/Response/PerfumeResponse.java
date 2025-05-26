@@ -8,6 +8,7 @@ public class PerfumeResponse {
     private int id;
     private String name;
     private int quantity;
+    private double price;
     private String brand;
 }
 

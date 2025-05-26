@@ -1,5 +1,7 @@
 package cl.duocuc.rodrcruz.Perfulandia.controller;
 
+import cl.duocuc.rodrcruz.Perfulandia.controller.Request.UserRequest;
+import cl.duocuc.rodrcruz.Perfulandia.controller.Response.UserResponse;
 import cl.duocuc.rodrcruz.Perfulandia.model.User;
 import cl.duocuc.rodrcruz.Perfulandia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,46 +9,83 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/user")
+@RequestMapping("/api/v1/users")
 public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping
-    public ResponseEntity<List<User>> getUser() {
+    public ResponseEntity<List<UserResponse>> getUsers() {
         List<User>users= userService.findAll();
-        return ResponseEntity.ok(users);
+        List<UserResponse> userResponses=new ArrayList<>();
+        for (User user : users) {
+            userResponses.add(convertToResponse(user));
+
+        }
+        return ResponseEntity.ok(userResponses);
+
 
     }
     @GetMapping("/{elementid}")
-    public ResponseEntity<User> getUserById(@PathVariable int elementid) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable int elementid) {
         Optional<User> userOptional= userService.findByid(elementid);
         if(userOptional.isPresent()) {
-            return ResponseEntity.ok(userOptional.get());
+            return ResponseEntity.ok(convertToResponse(userOptional.get()));
 
         }else{
             return ResponseEntity.notFound().build();
         }
     }
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User create = userService.CreateUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(create);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request) {
+        User newuser=convertToEntity(request);
+        User created = userService.CreateUser(newuser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(convertToResponse(created));
 
     }
-    @DeleteMapping
-    public ResponseEntity<User> deleteUser(@RequestBody User user) {
-        Optional<User> userOptional= userService.findByid(user.getId());
+    @DeleteMapping("/{elementid}")
+    public ResponseEntity<UserResponse> deleteUser(@PathVariable int elementid ) {
+        Optional<User> userOptional= userService.findByid(elementid);
         if(userOptional.isPresent()) {
-            return ResponseEntity.ok(userOptional.get());
+            userService.deleteUser(elementid);
+            return ResponseEntity.ok(convertToResponse(userOptional.get()));
         }else{
             return ResponseEntity.notFound().build();
 
         }
+    }
+    @PutMapping("/{elementid}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable int elementid ,@RequestBody UserRequest request) {
+       User found = userService.updateUser(elementid,convertToEntity(request));
+        if (found != null) {
+            return ResponseEntity.ok(convertToResponse(found));
+        }
+       return ResponseEntity.notFound().build();
+    }
+    private UserResponse convertToResponse(User user) {
+        UserResponse response = new UserResponse();
+        response.setId(user.getId());
+        response.setName(user.getName());
+        response.setLastname(user.getLastname());
+        response.setAge(user.getAge());
+        response.setEmail(user.getEmail());
+        response.setPhone(user.getPhone());
+        response.setRegistrationDate(user.getRegistrationDate());
+        return response;
+    }
+
+    private User convertToEntity(UserRequest request) {
+        User user = new User();
+        user.setName(request.getName());
+        user.setLastname(request.getLastname());
+        user.setAge(request.getAge());
+        user.setEmail(request.getEmail());
+        user.setPhone(request.getPhone());
+        return user;
     }
 
     }

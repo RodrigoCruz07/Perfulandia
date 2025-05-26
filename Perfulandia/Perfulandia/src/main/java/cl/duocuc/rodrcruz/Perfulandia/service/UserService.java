@@ -1,6 +1,5 @@
 package cl.duocuc.rodrcruz.Perfulandia.service;
 
-import cl.duocuc.rodrcruz.Perfulandia.model.Purchase;
 import cl.duocuc.rodrcruz.Perfulandia.model.User;
 import cl.duocuc.rodrcruz.Perfulandia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private int nextPurchaseId = 1;
+
 
     @Autowired
     private UserRepository userRepository;
@@ -36,28 +35,8 @@ public class UserService {
     }
 
 
-    public Boolean addPurchase(int userid, Purchase purchase) {
-        Optional<User> userfind = findByid(userid);
-        if (userfind.isPresent()) {
-            User user = userfind.get();
-            purchase.setId(nextPurchaseId++);
-            user.getPurchases().add(purchase);
-            return true;
 
-        }else{
-            return false;
-        }
-    }
-    public List<Purchase> getPurchases(int userid) {
-        Optional<User> userfind = findByid(userid);
-        if (userfind.isPresent()) {
-            return userfind.get().getPurchases();
 
-        }else{
-            return null;
-        }
-
-    }
     public User deleteUser(int userid) {
         Optional<User> userfind = findByid(userid);
         if (userfind.isPresent()) {
