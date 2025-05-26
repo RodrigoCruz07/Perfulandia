@@ -1,7 +1,9 @@
 package cl.duocuc.rodrcruz.Perfulandia.model;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -24,5 +26,7 @@ public class User {
     private String phone;
 
     private Date registrationDate;
+
+    private List<Purchase> purchases = new ArrayList<>();
 
 }
