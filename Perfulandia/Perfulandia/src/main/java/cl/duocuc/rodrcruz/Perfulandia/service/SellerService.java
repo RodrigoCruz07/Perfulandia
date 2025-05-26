@@ -15,7 +15,7 @@ public class SellerService {
         return repository.getAllSellers();
     }
 
-    public Seller getPotitionById(int elementId){
+    public Seller getSellerById(int elementId){
         List<Seller> seller = repository.getAllSellers();
         if (elementId>= 0 && elementId < seller.size() ){
             return seller.get(elementId);
@@ -26,14 +26,13 @@ public class SellerService {
     public Seller addSeller(Seller request){
         List<Seller> seller = repository.getAllSellers();
         int nextId = seller.size()+1;
-        Seller newSeller = new Seller(nextId,request.getName(),request.getLastname(),request.getAge(),
-                request.getAddress(),request.getPhone(),request.getEmail(),request.getRole());
-        seller.add(newSeller);
-        return newSeller;
+        request.setId(nextId);
+        seller.add(request);
+        return request;
     }
-    public Seller deleterSeller(int elementId){
+    public Seller deleteSeller(int elementId){
         List<Seller> seller = repository.getAllSellers();
-        if (getPotitionById(elementId) != null){
+        if (getSellerById(elementId) != null){
             return seller.remove(elementId);
         }
         return null;

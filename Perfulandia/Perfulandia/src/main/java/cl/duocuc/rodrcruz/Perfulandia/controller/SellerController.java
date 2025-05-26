@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/Sellers")
 public class SellerController {
@@ -17,7 +15,7 @@ public class SellerController {
 
     @GetMapping("/{ElementId}")
     public ResponseEntity<Seller> getSellers(@PathVariable int ElementId) {
-        Seller found = sellerService.getPotitionById(ElementId);
+        Seller found = sellerService.getSellerById(ElementId);
         if (found == null) {
             return ResponseEntity.notFound().build();
         }
@@ -25,7 +23,7 @@ public class SellerController {
     }
     @PutMapping("/{ElementId}")
     public ResponseEntity<Seller> PutSellers(@PathVariable int ElementId, @RequestBody Seller request) {
-        Seller found = sellerService.getPotitionById(ElementId);
+        Seller found = sellerService.getSellerById(ElementId);
         if (found == null) {
             return ResponseEntity.notFound().build();
         }
@@ -37,12 +35,13 @@ public class SellerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(found);
     }
     @DeleteMapping("/{ElementId}")
-    public ResponseEntity<Seller> deleteSeller(@PathVariable int ElementId){
-        Seller delete = sellerService.getPotitionById(ElementId);
+    public ResponseEntity<?> deleteSeller(@PathVariable int ElementId){
+        Seller delete = sellerService.getSellerById(ElementId);
         if (delete== null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(delete);
+        sellerService.deleteSeller(ElementId);
+        return ResponseEntity.ok("Vendedor eliminado correctamente");
     }
 
 
