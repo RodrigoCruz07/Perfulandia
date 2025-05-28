@@ -49,10 +49,9 @@ public class UserController {
     }
     @DeleteMapping("/{elementid}")
     public ResponseEntity<UserResponse> deleteUser(@PathVariable int elementid ) {
-        Optional<User> userOptional= userService.findByid(elementid);
-        if(userOptional.isPresent()) {
-            userService.deleteUser(elementid);
-            return ResponseEntity.ok(convertToResponse(userOptional.get()));
+        User deleted=userService.deleteUser(elementid);
+        if(deleted!=null) {
+            return ResponseEntity.ok(convertToResponse(deleted));
         }else{
             return ResponseEntity.notFound().build();
 

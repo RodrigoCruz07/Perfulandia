@@ -18,6 +18,7 @@ import java.util.Optional;
 public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
+
     @GetMapping
     public ResponseEntity<List<PurchaseResponse>> getAllPurchases() {
         List<Purchase> purchases = purchaseService.getAllPurchases();
