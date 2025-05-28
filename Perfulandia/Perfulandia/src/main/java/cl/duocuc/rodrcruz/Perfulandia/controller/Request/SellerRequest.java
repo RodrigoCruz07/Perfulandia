@@ -1,30 +1,17 @@
-package cl.duocuc.rodrcruz.Perfulandia.model;
-import lombok.*;
+package cl.duocuc.rodrcruz.Perfulandia.controller.Request;
 
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Seller {
-    private int id;
-
+public class SellerRequest {
     private String name;
-
     private String lastname;
-
     private int age;
-
     private String address;
-
     private String phone;
-
     private String email;
-
     private String role;
-
-
 
 }

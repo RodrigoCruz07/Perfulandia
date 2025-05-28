@@ -1,6 +1,8 @@
 package cl.duocuc.rodrcruz.Perfulandia.model;
+
 import lombok.*;
-import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -8,12 +10,14 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Perfume {
-
+public class Purchase {
     private int id;
-    private String name;
+    private int userid;
+    private int perfumeid;
+    private String perfumename;
     private int quantity;
     private double price;
-    private String brand;
+    private Date purchasedate;
+
 
 }
