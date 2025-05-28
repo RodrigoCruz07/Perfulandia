@@ -1,7 +1,9 @@
 package cl.duocuc.rodrcruz.Perfulandia.model;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -9,7 +11,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
 public class User {
     private int id;
 
@@ -24,5 +26,6 @@ public class User {
     private String phone;
 
     private Date registrationDate;
+
 
 }
