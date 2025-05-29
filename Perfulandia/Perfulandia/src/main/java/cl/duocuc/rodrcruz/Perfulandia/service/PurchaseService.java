@@ -51,13 +51,14 @@ public class PurchaseService {
         return purchaseRepository.getPurchases().stream().filter(p -> p.getId() == id).findFirst();
     }
 
-    public boolean deletePurchaseById(int id) {
+    public Purchase deletePurchaseById(int id) {
         Optional<Purchase> purchase = getPurchaseById(id);
         if (purchase.isPresent()) {
-            return purchaseRepository.getPurchases().remove(purchase.get());
+            purchaseRepository.getPurchases().remove(purchase.get());
+            return purchase.get();
 
         } else {
-            return false;
+            return null;
         }
     }
     public Purchase updatePurchase(int purchaseid,int newPerfumeid) {

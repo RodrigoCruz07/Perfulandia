@@ -39,27 +39,21 @@ public class PurchaseController {
         }
     }
     @PostMapping
-    public ResponseEntity<PurchaseResponse> createPurchase(@RequestBody PurchaseRequest request) {
-
+    public ResponseEntity<PurchaseResponse> createPurchase(
+            @RequestBody PurchaseRequest request) {
         Purchase purchase = convertToEntity(request);
         Purchase savedpurchase=purchaseService.addPurchase(purchase);
         if(savedpurchase!=null){
             return new ResponseEntity<>(convertToResponse(savedpurchase), HttpStatus.CREATED);
-
         }else{
             return ResponseEntity.badRequest().build();
-
         }
     }
     @DeleteMapping("/{elementid}")
-
     public ResponseEntity<PurchaseResponse> deletePurchase(@PathVariable int elementid) {
-        Optional<Purchase> purchase = purchaseService.getPurchaseById(elementid);
-        if (purchase.isPresent()) {
-            purchaseService.deletePurchaseById(elementid);
-            PurchaseResponse purchaseResponse = convertToResponse(purchase.get());
-            return new ResponseEntity<>(purchaseResponse, HttpStatus.OK);
-
+        Purchase deleted = purchaseService.deletePurchaseById(elementid);
+        if(deleted!=null){
+            return new ResponseEntity<>(convertToResponse(deleted), HttpStatus.OK);
         }else{
             return ResponseEntity.notFound().build();
         }

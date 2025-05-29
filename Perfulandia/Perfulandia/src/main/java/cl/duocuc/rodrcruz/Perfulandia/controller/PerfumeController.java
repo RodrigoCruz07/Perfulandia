@@ -28,8 +28,7 @@ public class PerfumeController {
             List<PerfumeResponse> response = perfumes.stream()
                     .map(this::convertToResponse)
                     .collect(Collectors.toList());
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
+            return new ResponseEntity<>(response, HttpStatus.OK);}
 
         //Buscar perfume por ID
         @GetMapping("/{id}")
@@ -37,7 +36,6 @@ public class PerfumeController {
         Optional<Perfume> perfume = perfumeService.findById(id);
         return perfume.map(value -> new ResponseEntity<>(convertToResponse(value),
                 HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
         }
 
         //buscar perfume por nombre
@@ -55,7 +53,8 @@ public class PerfumeController {
 
         //Crear un perfume
         @PostMapping
-        public ResponseEntity<PerfumeResponse> createPerfume (@RequestBody PerfumeRequest request) {
+        public ResponseEntity<PerfumeResponse> createPerfume (
+                @RequestBody PerfumeRequest request) {
         Perfume perfume = convertToEntity(request);
         Perfume savedPerfume = perfumeService.save(perfume);
         return new ResponseEntity <>(convertToResponse(savedPerfume), HttpStatus.CREATED);
@@ -63,7 +62,8 @@ public class PerfumeController {
 
         //Actualizar perfume
         @PutMapping("/{id}")
-        public ResponseEntity <PerfumeResponse> updatePerfume (@PathVariable int id, @RequestBody PerfumeRequest request) {
+        public ResponseEntity <PerfumeResponse> updatePerfume (
+                @PathVariable int id, @RequestBody PerfumeRequest request) {
         Perfume perfume = convertToEntity(request);
         perfume.setId(id);
         Perfume updatedPerfume = perfumeService.save(perfume);
