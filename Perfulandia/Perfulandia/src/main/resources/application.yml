@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: perfulandia
+
+  datasource:
+    url: jdbc:h2:file:./db/perfulandia
+    username: perfulandia
+    password:
+    driver-class-name: org.h2.Driver
+
+  h2:
+      console:
+        enabled: true
+        settings:
+          web-allow-others: true
+
+  jpa:
+      properties:
+        hibernate:
+          enable_lazy_load_no_trans: true
+          use_sql_comments: false
+          format_sql: false
+          hbm2ddl:
+            auto: create
+          dialect: org.hibernate.dialect.H2Dialect
+          show_sql: true
