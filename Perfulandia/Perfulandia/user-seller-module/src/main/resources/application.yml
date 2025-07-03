@@ -1,4 +1,5 @@
 spring:
+
   application:
     name: moduleusers
   datasource:
@@ -20,9 +21,18 @@ spring:
           auto: update
         dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
+        defer-datasource-initialization: true
   sql:
     init:
       mode: always
       continue-on-error: true
 server:
   port: 8081
+perfume:
+  purchase:
+    service:
+      url: http://localhost:8080
+jwt:
+  secret: tu_secreto_muy_seguro_y_largo_aqui_cambialo_en_produccion_1234567890abcdef # ¡IMPORTANTE: Cambia este secreto!
+  expiration:
+    ms: 3600000

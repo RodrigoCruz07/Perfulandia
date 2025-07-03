@@ -23,10 +23,11 @@ public class SellerDB {
     private String address;
     @Column(name = "phone",updatable = true, nullable = false)
     private String phone;
-    @Column(name = "email",updatable = true, nullable = false)
+    @Column(name = "email",updatable = true, nullable = false,unique = true)
     private String email;
-    @Column(name = "role",updatable = true, nullable = false)
-    private String role;
-
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    private RoleDB role; //
+    @Column(name = "password", nullable = false)
+    private String password;
 }
