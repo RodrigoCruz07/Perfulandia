@@ -10,6 +10,7 @@ public class PerfumeInventoryPurchaseApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PerfumeInventoryPurchaseApplication.class, args);
+
     }
 
 }
