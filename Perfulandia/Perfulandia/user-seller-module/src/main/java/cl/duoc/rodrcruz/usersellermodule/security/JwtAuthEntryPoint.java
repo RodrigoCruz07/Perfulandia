@@ -14,7 +14,7 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-        // Este método se ejecuta cuando un usuario no autenticado intenta acceder a un recurso protegido
+        // Este método se ejecutara cuando un usuario no autenticado intenta acceder a un recurso protegido
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: No autorizado. " + authException.getMessage());
     }
 }

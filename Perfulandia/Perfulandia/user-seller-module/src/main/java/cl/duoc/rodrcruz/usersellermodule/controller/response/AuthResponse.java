@@ -3,9 +3,9 @@ import lombok.*;
 
 @Getter
 @Setter
-@Data // Anotación de Lombok
-@AllArgsConstructor // Anotación de Lombok
-@NoArgsConstructor // Anotación de Lombok
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AuthResponse {
     private String token;
     private String message;

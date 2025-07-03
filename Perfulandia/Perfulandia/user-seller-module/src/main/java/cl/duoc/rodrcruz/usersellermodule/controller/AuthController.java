@@ -4,7 +4,7 @@ import cl.duoc.rodrcruz.usersellermodule.controller.request.RegisterRequest;
 import cl.duoc.rodrcruz.usersellermodule.controller.response.AuthResponse;
 import cl.duoc.rodrcruz.usersellermodule.repository.SellerDB;
 import cl.duoc.rodrcruz.usersellermodule.security.JwtUtil;
-import cl.duoc.rodrcruz.usersellermodule.service.SellerService; // <-- ¡¡¡IMPORTA TU NUEVO SellerService!!!
+import cl.duoc.rodrcruz.usersellermodule.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +13,13 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService; // Puedes usar esta interfaz o SellerUserDetailsService
-import org.springframework.security.crypto.password.PasswordEncoder; // Aunque PasswordEncoder se usará en SellerService
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException; // Necesario si SellerService lanza esta excepción
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")

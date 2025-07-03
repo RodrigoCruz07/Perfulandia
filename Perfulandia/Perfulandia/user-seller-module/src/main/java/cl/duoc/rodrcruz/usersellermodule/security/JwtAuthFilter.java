@@ -3,6 +3,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,13 +17,11 @@ import java.io.IOException;
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    private final JwtUtil jwtUtil;
-    private final UserDetailsService userDetailsService; // Será tu CustomUserDetailsService
+    @Autowired
+    private JwtUtil jwtUtil;
 
-    public JwtAuthFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
-        this.jwtUtil = jwtUtil;
-        this.userDetailsService = userDetailsService;
-    }
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -35,16 +34,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         // Extrae el token JWT del encabezado "Authorization" si existe y comienza con "Bearer "
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            jwt = authHeader.substring(7); // Quita "Bearer "
+            jwt = authHeader.substring(7);
             try {
                 username = jwtUtil.extractUsername(jwt);
             } catch (Exception e) {
-                // En un entorno de producción, loguear este error. Aquí, simplemente continuar.
+
                 logger.warn("JWT inválido o expirado: " + e.getMessage());
             }
         }
 
-        // Si se extrajo un nombre de usuario y no hay autenticación activa en el contexto de seguridad
+
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
@@ -57,7 +56,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
-
-        filterChain.doFilter(request, response); // Continúa con el siguiente filtro en la cadena
+// Continúa con el siguiente filtro en la cadena
+        filterChain.doFilter(request, response);
     }
 }

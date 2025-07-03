@@ -30,12 +30,12 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
     @Mock
-    private UserService userService; // Mock del servicio
+    private UserService userService;
     @InjectMocks
     private UserController userController;
     private UserRequest testUserRequest;
     private UserDB testUserDB;
-    private UserResponse testUserResponse; // Para las respuestas del controlador
+    private UserResponse testUserResponse;
     private RoleDB testRoleDB;
 
     @BeforeEach
@@ -44,34 +44,29 @@ class UserControllerTest {
 
         testUserRequest = new UserRequest("Nuevo", "Usuario", 25, "nuevo.usuario@test.com", "123456789", "USUARIO");
 
-        // UserDB: (id, name, lastname, age, email, phone, registrationDate, role)
         testUserDB = new UserDB(1, testUserRequest.getName(), testUserRequest.getLastname(), testUserRequest.getAge(),
                 testUserRequest.getEmail(), testUserRequest.getPhone(),
-                LocalDate.now(), // registrationDate
-                testRoleDB);     // role (el campo se llama 'role' en tu UserDB)
+                LocalDate.now(),
+                testRoleDB);
 
-        // *** CORRECCIÓN AQUI: Pasar TODOS los 8 parámetros al constructor de UserResponse ***
-        // UserResponse constructor: (id, name, lastname, age, email, phone, registrationDate, roleName)
         testUserResponse = new UserResponse(
                 testUserDB.getId(),
                 testUserDB.getName(),
-                testUserDB.getLastname(), // <--- Añadido
-                testUserDB.getAge(),      // <--- Añadido
+                testUserDB.getLastname(),
+                testUserDB.getAge(),
                 testUserDB.getEmail(),
-                testUserDB.getPhone(),    // <--- Añadido
-                testUserDB.getRegistrationDate(), // <--- Añadido
+                testUserDB.getPhone(),
+                testUserDB.getRegistrationDate(),
                 testUserDB.getRole().getName()
         );
     }
     @Test
     void register_ok() {
         // Given
-        // UserRequest sin contraseña, solo datos de usuario.
         given(userService.registerUser(any(UserRequest.class))).willReturn(testUserDB);
 
         // When
         ResponseEntity<UserResponse> response = userController.register(testUserRequest);
-
 
         // Then
         assertNotNull(response);
@@ -89,10 +84,10 @@ class UserControllerTest {
 
     @Test
     void getAllUsers() {
+        // Given
         UserDB user2DB = new UserDB(2, "Otro", "User", 30, "otro@test.com", "987654321", LocalDate.now(), new RoleDB(2, "VENDEDOR"));
         List<UserDB> userDBList = Arrays.asList(testUserDB, user2DB);
 
-        // *** CORRECCIÓN AQUI: Crear user2Response con todos los 8 parámetros ***
         UserResponse user2Response = new UserResponse(
                 user2DB.getId(),
                 user2DB.getName(),
@@ -105,11 +100,12 @@ class UserControllerTest {
         );
         List<UserResponse> expectedResponses = Arrays.asList(testUserResponse, user2Response);
 
-
         given(userService.findAllUsers()).willReturn(userDBList);
 
+        // When
         ResponseEntity<List<UserResponse>> response = userController.getAllUsers();
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
         List<UserResponse> body = response.getBody();
@@ -117,23 +113,22 @@ class UserControllerTest {
         assertEquals(expectedResponses.size(), body.size());
         assertEquals(expectedResponses.get(0).getId(), body.get(0).getId());
         assertEquals(expectedResponses.get(1).getEmail(), body.get(1).getEmail());
-        // Puedes añadir aserciones para los otros campos de los elementos de la lista
+
         assertEquals(expectedResponses.get(0).getLastname(), body.get(0).getLastname());
         assertEquals(expectedResponses.get(1).getPhone(), body.get(1).getPhone());
-
 
         verify(userService, times(1)).findAllUsers();
     }
 
     @Test
     void updateUser() {
+        // Given
         Integer userId = 1;
         UserRequest updatedRequest = new UserRequest("Updated", "User", 30, "updated@test.com", "99999", "ADMIN");
         UserDB updatedUserDB = new UserDB(userId, updatedRequest.getName(), updatedRequest.getLastname(), updatedRequest.getAge(),
                 updatedRequest.getEmail(), updatedRequest.getPhone(),
                 LocalDate.now(), new RoleDB(2, updatedRequest.getRoleName()));
 
-        // *** CORRECCIÓN AQUI: Crear expectedResponse con todos los 8 parámetros ***
         UserResponse expectedResponse = new UserResponse(
                 userId,
                 updatedRequest.getName(),
@@ -141,15 +136,17 @@ class UserControllerTest {
                 updatedRequest.getAge(),
                 updatedRequest.getEmail(),
                 updatedRequest.getPhone(),
-                // Asumiendo que registrationDate se mantiene o es LocalDate.now()
-                updatedUserDB.getRegistrationDate(), // Usamos la fecha del UserDB actualizado
+
+                updatedUserDB.getRegistrationDate(),
                 updatedRequest.getRoleName()
         );
 
         given(userService.updateUser(eq(userId), any(UserRequest.class))).willReturn(updatedUserDB);
 
+        // When
         ResponseEntity<UserResponse> response = userController.updateUser(userId, updatedRequest);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
         UserResponse body = response.getBody();
@@ -158,7 +155,7 @@ class UserControllerTest {
         assertEquals(expectedResponse.getName(), body.getName());
         assertEquals(expectedResponse.getEmail(), body.getEmail());
         assertEquals(expectedResponse.getRoleName(), body.getRoleName());
-        // Puedes añadir más aserciones para los otros campos
+
         assertEquals(expectedResponse.getLastname(), body.getLastname());
         assertEquals(expectedResponse.getAge(), body.getAge());
         assertEquals(expectedResponse.getPhone(), body.getPhone());
@@ -168,14 +165,17 @@ class UserControllerTest {
     }
     @Test
     void updateUser_notFound() {
+        // Given
         Integer nonExistentId = 999;
         UserRequest request = testUserRequest;
 
         given(userService.updateUser(eq(nonExistentId), any(UserRequest.class)))
                 .willThrow(new RuntimeException("Usuario no encontrado con ID: " + nonExistentId));
 
+        // When
         ResponseEntity<UserResponse> response = userController.updateUser(nonExistentId, request);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(404), response.getStatusCode());
         assertNull(response.getBody());
@@ -185,11 +185,10 @@ class UserControllerTest {
     @Test
     void updateUser_genericError_badRequest() {
         // Given
-        Integer userId = 1; // ID de un usuario existente
-        UserRequest request = testUserRequest; // Un request de actualización válido
+        Integer userId = 1;
+        UserRequest request = testUserRequest;
         String errorMessage = "Error interno del servicio: No se pudo procesar la solicitud.";
 
-        // El servicio lanza una RuntimeException con un mensaje que NO contiene "Usuario no encontrado"
         given(userService.updateUser(eq(userId), any(UserRequest.class)))
                 .willThrow(new RuntimeException(errorMessage));
 
@@ -198,21 +197,24 @@ class UserControllerTest {
 
         // Then
         assertNotNull(response);
-        assertEquals(HttpStatusCode.valueOf(400), response.getStatusCode()); // Esperamos un 400 Bad Request
+        assertEquals(HttpStatusCode.valueOf(400), response.getStatusCode());
         UserResponse body = response.getBody();
         assertNotNull(body);
-        assertEquals(errorMessage, body.getName()); // Verificamos que el mensaje de error se mapea al campo 'name' del UserResponse
+        assertEquals(errorMessage, body.getName());
 
         verify(userService, times(1)).updateUser(eq(userId), any(UserRequest.class));
     }
 
     @Test
     void getUserById() {
+        // Given
         Integer userId = 1;
         given(userService.getUserById(eq(userId))).willReturn(testUserDB);
 
+        // When
         ResponseEntity<UserResponse> response = userController.getUserById(userId);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
         UserResponse body = response.getBody();
@@ -221,7 +223,7 @@ class UserControllerTest {
         assertEquals(testUserResponse.getName(), body.getName());
         assertEquals(testUserResponse.getEmail(), body.getEmail());
         assertEquals(testUserResponse.getRoleName(), body.getRoleName());
-        // Añade más aserciones para los otros campos si lo deseas
+
         assertEquals(testUserResponse.getLastname(), body.getLastname());
         assertEquals(testUserResponse.getAge(), body.getAge());
         assertEquals(testUserResponse.getPhone(), body.getPhone());
@@ -231,12 +233,15 @@ class UserControllerTest {
     }
     @Test
     void getUserById_notFound() {
+        // Given
         Integer nonExistentId = 999;
         given(userService.getUserById(eq(nonExistentId)))
                 .willThrow(new RuntimeException("Usuario no encontrado con ID: " + nonExistentId));
 
+        // When
         ResponseEntity<UserResponse> response = userController.getUserById(nonExistentId);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(404), response.getStatusCode());
         assertNull(response.getBody());
@@ -245,12 +250,14 @@ class UserControllerTest {
     }
     @Test
     void deleteUser() {
+        // Given
         Integer userId = 1;
-        // *** CAMBIO AQUÍ: Usamos when().thenReturn() porque deleteUser devuelve boolean ***
-        when(userService.deleteUser(eq(userId))).thenReturn(true); // Mock para que devuelva 'true' (éxito)
+        when(userService.deleteUser(eq(userId))).thenReturn(true);
 
+        // When
         ResponseEntity<Void> response = userController.deleteUser(userId);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(204), response.getStatusCode());
         assertNull(response.getBody());
@@ -259,12 +266,14 @@ class UserControllerTest {
     }
     @Test
     void deleteUser_notFound() {
+        // Given
         Integer nonExistentId = 999;
-        // *** CAMBIO CLAVE AQUÍ: Mockeamos para que devuelva 'false' en lugar de lanzar excepción ***
         when(userService.deleteUser(eq(nonExistentId))).thenReturn(false);
 
+        // When
         ResponseEntity<Void> response = userController.deleteUser(nonExistentId);
 
+        // Then
         assertNotNull(response);
         assertEquals(HttpStatusCode.valueOf(404), response.getStatusCode());
         assertNull(response.getBody());
