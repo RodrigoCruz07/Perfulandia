@@ -7,6 +7,7 @@ import cl.duoc.rodrcruz.usersellermodule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private UserService userService;
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'VENDEDOR')")
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@RequestBody UserRequest request) {
         UserDB nuevo= userService.registerUser(request);
@@ -24,12 +26,14 @@ public class UserController {
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
 
     }
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'VENDEDOR')")
     @GetMapping
     public ResponseEntity<List<UserResponse>> getAllUsers() {
         List<UserDB> usersDB = userService.findAllUsers();
         List<UserResponse> userResponses = usersDB.stream().map(this::convertToUserResponse).collect(Collectors.toList());
         return new ResponseEntity<>(userResponses, HttpStatus.OK);
     }
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'VENDEDOR')")
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable Integer id, @RequestBody UserRequest request) {
         try {
@@ -46,6 +50,7 @@ public class UserController {
             }
         }
     }
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'VENDEDOR')")
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable Integer id) {
         try {
@@ -56,6 +61,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'VENDEDOR')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         boolean deleted = userService.deleteUser(id);

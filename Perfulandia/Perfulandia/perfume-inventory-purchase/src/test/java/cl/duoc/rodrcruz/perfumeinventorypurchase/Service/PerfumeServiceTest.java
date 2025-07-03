@@ -25,7 +25,7 @@ class PerfumeServiceTest {
     @InjectMocks // Inyecta el mock del en el servicio
     private PerfumeDB testPerfumeDB;
     private Perfume testPerfume;
-    private PerfumeService perfumeService;
+    private cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PerfumeService perfumeService;
 
     @Test
     void getPerfume() {

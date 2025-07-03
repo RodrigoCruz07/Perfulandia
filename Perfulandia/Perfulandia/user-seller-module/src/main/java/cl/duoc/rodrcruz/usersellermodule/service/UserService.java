@@ -1,7 +1,6 @@
 package cl.duoc.rodrcruz.usersellermodule.service;
 
 import cl.duoc.rodrcruz.usersellermodule.controller.request.UserRequest;
-import cl.duoc.rodrcruz.usersellermodule.model.User;
 import cl.duoc.rodrcruz.usersellermodule.repository.RoleDB;
 import cl.duoc.rodrcruz.usersellermodule.repository.RoleJpaRepository;
 import cl.duoc.rodrcruz.usersellermodule.repository.UserDB;
@@ -19,6 +18,8 @@ public class UserService {
     private UserJpaRepository userJpaRepository;
     @Autowired
     private RoleJpaRepository roleJpaRepository;
+
+
     public UserDB registerUser(UserRequest user) {
         List<UserDB> found = userJpaRepository.findByNameOrEmail(user.getName(), user.getEmail());
         if (!found.isEmpty()) {
