@@ -4,8 +4,8 @@ import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.request.PurchaseRequ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.reponse.PurchaseResponse;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PurchaseService;
+import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.response.PurchaseResponse;
+import cl.duoc.rodrcruz.perfumeinventorypurchase.service.PurchaseService;
 
 import java.util.List;
 import java.util.stream.Collectors;

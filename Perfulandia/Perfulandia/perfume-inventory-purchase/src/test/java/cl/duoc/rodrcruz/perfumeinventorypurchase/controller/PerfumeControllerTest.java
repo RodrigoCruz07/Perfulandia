@@ -1,6 +1,6 @@
 package cl.duoc.rodrcruz.perfumeinventorypurchase.controller;
 
-import cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PerfumeService;
+import cl.duoc.rodrcruz.perfumeinventorypurchase.service.PerfumeService;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.request.PerfumeRequest;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.response.PerfumeResponse;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.model.Perfume;

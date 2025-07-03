@@ -1,6 +1,4 @@
-package cl.duoc.rodrcruz.perfumeinventorypurchase.reponse;
-
-
+package cl.duoc.rodrcruz.perfumeinventorypurchase.controller.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +8,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class InventoryResponse {
+public class PurchaseResponse {
     private Integer id;
+    private String userId;
     private String perfumeName;
     private Integer quantity;
-    private double price;
-    private String location;
-    private LocalDateTime lastRestockDate;
+    private Double price;
+    private LocalDateTime purchaseDate;
 }

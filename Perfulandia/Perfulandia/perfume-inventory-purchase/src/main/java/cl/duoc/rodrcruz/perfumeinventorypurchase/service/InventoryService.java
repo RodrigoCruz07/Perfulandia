@@ -1,4 +1,4 @@
-package cl.duoc.rodrcruz.perfumeinventorypurchase.Service;
+package cl.duoc.rodrcruz.perfumeinventorypurchase.service;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.InventoryDB;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.InventoryJpaRepository;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeDB;
