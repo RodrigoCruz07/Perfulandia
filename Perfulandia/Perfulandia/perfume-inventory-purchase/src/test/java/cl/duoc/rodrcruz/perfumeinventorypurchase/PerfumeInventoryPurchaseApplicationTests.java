@@ -9,5 +9,5 @@ class PerfumeInventoryPurchaseApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
+

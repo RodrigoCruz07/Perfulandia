@@ -1,4 +1,4 @@
-package cl.duoc.rodrcruz.perfumeinventorypurchase.Service;
+package cl.duoc.rodrcruz.perfumeinventorypurchase.service;
 
 import cl.duoc.rodrcruz.perfumeinventorypurchase.model.Perfume;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeDB;
@@ -20,7 +20,7 @@ public class PerfumeService {
     }
     public PerfumeDB registerPerfume(Perfume perfume) {
         Optional<PerfumeDB> found = perfumeJpaRepository.findByNameAndBrand(perfume.getName(), perfume.getBrand());
-        if (!found.isEmpty()) {
+        if (found.isEmpty()) {
             return found.get();
         }
         PerfumeDB NewPerfumeDB = new PerfumeDB();
