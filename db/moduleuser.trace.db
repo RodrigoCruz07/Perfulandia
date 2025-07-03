@@ -1,0 +1,12 @@
+2025-07-03 02:52:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) SELECT 'GERENTE' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'GERENTE') [42104-220]
+2025-07-03 02:52:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) SELECT 'LOGISTICA' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'LOGISTICA') [42104-220]
+2025-07-03 02:52:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) SELECT 'VENDEDOR' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'VENDEDOR') [42104-220]
+2025-07-03 02:52:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLES" not found (this database is empty); SQL statement:
+INSERT INTO roles (name) SELECT 'USUARIO' WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'USUARIO') [42104-220]

@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39f08747-fa9e-40b2-88a0-b3c84c6bf48e" name="Changes" comment="">
+    <list default="true" id="39f08747-fa9e-40b2-88a0-b3c84c6bf48e" name="Changes" comment="Se Agrego la logica de Perfume y se agrego los test unitarios de Perfumes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/PerfumeInventoryPurchaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/PerfumeInventoryPurchaseApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/InventoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/InventoryDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/PerfumeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/PerfumeDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/PerfumeJpaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/PerfumeJpaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,18 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JoaquinMun"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JoaquinMun&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/RodrigoCruz07/Perfulandia.git",
-    "accountId": "a6975cfd-d23d-4a0b-bba4-d716071ae93a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/RodrigoCruz07/Perfulandia.git&quot;,
+    &quot;accountId&quot;: &quot;a6975cfd-d23d-4a0b-bba4-d716071ae93a&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -54,6 +52,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.PerfumeControllerTest.deletePerfume.executor": "Run",
+    "JUnit.PerfumeControllerTest.getPerfumeById.executor": "Run",
+    "JUnit.PerfumeControllerTest.registerPerfume.executor": "Run",
+    "JUnit.PerfumeControllerTest.updatePerfume.executor": "Run",
     "JUnit.PerfumeServiceTest.deletePerfume.executor": "Run",
     "JUnit.PerfumeServiceTest.getPerfume.executor": "Run",
     "JUnit.PerfumeServiceTest.registerPerfume.executor": "Run",
@@ -99,6 +101,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
       <recent name="cl.duoc.rodrcruz.perfumeinventorypurchase.Service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -115,50 +118,82 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PerfumeServiceTest.deletePerfume">
-    <configuration name="PerfumeServiceTest.deletePerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PerfumeControllerTest.getAllPerfumes">
+    <configuration name="PerfumeControllerTest.deletePerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="perfume-inventory-purchase" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.*" />
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service" />
-      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PerfumeServiceTest" />
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PerfumeControllerTest" />
       <option name="METHOD_NAME" value="deletePerfume" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerfumeServiceTest.getPerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PerfumeControllerTest.getAllPerfumes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="perfume-inventory-purchase" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.*" />
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service" />
-      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PerfumeServiceTest" />
-      <option name="METHOD_NAME" value="getPerfume" />
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PerfumeControllerTest" />
+      <option name="METHOD_NAME" value="getAllPerfumes" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerfumeServiceTest.registerPerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PerfumeControllerTest.getPerfumeById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="perfume-inventory-purchase" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.*" />
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service" />
-      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.Service.PerfumeServiceTest" />
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PerfumeControllerTest" />
+      <option name="METHOD_NAME" value="getPerfumeById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PerfumeControllerTest.registerPerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="perfume-inventory-purchase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PerfumeControllerTest" />
       <option name="METHOD_NAME" value="registerPerfume" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PerfumeControllerTest.updatePerfume" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="perfume-inventory-purchase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PerfumeControllerTest" />
+      <option name="METHOD_NAME" value="updatePerfume" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,9 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PerfumeServiceTest.deletePerfume" />
-        <item itemvalue="JUnit.PerfumeServiceTest.getPerfume" />
-        <item itemvalue="JUnit.PerfumeServiceTest.registerPerfume" />
+        <item itemvalue="JUnit.PerfumeControllerTest.getAllPerfumes" />
+        <item itemvalue="JUnit.PerfumeControllerTest.deletePerfume" />
+        <item itemvalue="JUnit.PerfumeControllerTest.updatePerfume" />
+        <item itemvalue="JUnit.PerfumeControllerTest.getPerfumeById" />
+        <item itemvalue="JUnit.PerfumeControllerTest.registerPerfume" />
       </list>
     </recent_temporary>
   </component>
@@ -213,11 +250,25 @@
       <workItem from="1751205092382" duration="878000" />
       <workItem from="1751205984931" duration="5068000" />
       <workItem from="1751212423058" duration="80000" />
-      <workItem from="1751501273698" duration="22712000" />
+      <workItem from="1751501273698" duration="23295000" />
+      <workItem from="1751558529312" duration="2613000" />
     </task>
+    <task id="LOCAL-00001" summary="Se Agrego la logica de Perfume y se agrego los test unitarios de Perfumes">
+      <option name="closed" value="true" />
+      <created>1751530796791</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1751530796791</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se Agrego la logica de Perfume y se agrego los test unitarios de Perfumes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se Agrego la logica de Perfume y se agrego los test unitarios de Perfumes" />
   </component>
 </project>
