@@ -14,7 +14,7 @@ spring:
         use_sql_comments: false
         format_sql: false
         hbm2ddl:
-          auto: create-drop
+          auto: create
         dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
   h2:

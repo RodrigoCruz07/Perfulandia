@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 
 public class PurchaseRequest {
-    private int userid;
+    private String userid;
     private String perfumeid;
     private Integer quantity;
     private double price;

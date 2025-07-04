@@ -20,7 +20,7 @@ public class PerfumeService {
     }
     public PerfumeDB registerPerfume(Perfume perfume) {
         Optional<PerfumeDB> found = perfumeJpaRepository.findByNameAndBrand(perfume.getName(), perfume.getBrand());
-        if (found.isEmpty()) {
+        if (found.isPresent()) {
             return found.get();
         }
         PerfumeDB NewPerfumeDB = new PerfumeDB();
@@ -29,9 +29,8 @@ public class PerfumeService {
         NewPerfumeDB.setSize(perfume.getSize());
         return perfumeJpaRepository.save(NewPerfumeDB);
 
-
-
     }
+
     public PerfumeDB updatePerfume(Integer id, Perfume UpPerfume) {
         PerfumeDB found = perfumeJpaRepository.findById(id).orElseThrow(() -> new RuntimeException("Perfume not found"));
         if (UpPerfume.getName() != null && UpPerfume.getName().isEmpty()) {

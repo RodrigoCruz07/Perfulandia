@@ -42,7 +42,7 @@ class PurchaseControllerTest {
         testPurchaseDB.setPurchasedate(LocalDateTime.now());
 
         testRequest = new PurchaseRequest();
-        testRequest.setUserid(123);
+        testRequest.setUserid("usuario123");
         testRequest.setPerfumeid("1");
         testRequest.setQuantity(2);
         testRequest.setPrice(120000);
