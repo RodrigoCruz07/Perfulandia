@@ -29,7 +29,7 @@ import java.util.Map;
 public class DataSourceConfig {
 
     @Bean
-    @Primary // Marca este como el DataSource principal si no especificas uno en otros lugares
+    @Primary
     @ConfigurationProperties("spring.datasource") // Lee la configuración de application.yml
     public DataSourceProperties purchaseDataSourceProperties() {
         return new DataSourceProperties();
@@ -37,7 +37,7 @@ public class DataSourceConfig {
 
     @Bean
     @Primary
-    @ConfigurationProperties("spring.datasource.hikari") // O "spring.datasource.tomcat", etc.
+    @ConfigurationProperties("spring.datasource.hikari") // O "spring.datasource.tomcat"
     public DataSource purchaseDataSource(@Qualifier("purchaseDataSourceProperties") DataSourceProperties properties) {
         return properties.initializeDataSourceBuilder().build();
     }
@@ -48,13 +48,13 @@ public class DataSourceConfig {
             @Qualifier("purchaseDataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("cl.duoc.rodrcruz.perfumeinventorypurchase.repository"); // Entidades de este DataSource
+        em.setPackagesToScan("cl.duoc.rodrcruz.perfumeinventorypurchase.repository");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
 
         Map<String, Object> properties = new HashMap<>();
-        properties.put("hibernate.hbm2ddl.auto", "update"); // O "none" si no quieres que lo gestione Hibernate
+        properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");

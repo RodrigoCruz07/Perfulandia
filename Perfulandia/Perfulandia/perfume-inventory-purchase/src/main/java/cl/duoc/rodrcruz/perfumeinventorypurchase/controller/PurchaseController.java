@@ -18,6 +18,7 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
 
+
     // Crear nueva compra
     @PostMapping
     public ResponseEntity<PurchaseResponse> createPurchase(@RequestBody PurchaseRequest request) {

@@ -1,8 +1,5 @@
 package cl.duoc.rodrcruz.perfumeinventorypurchase.service;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PurchaseDB;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PurchaseJpaRepository;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeJpaRepository;
-import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeDB;
+import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.*;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.request.PurchaseRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +15,18 @@ public class PurchaseService {
 
     @Autowired
     private PerfumeJpaRepository perfumeJpaRepository;
-
+    @Autowired
+    private InventoryJpaRepository inventoryJpaRepository;
     public PurchaseDB registerPurchase(PurchaseRequest request) {
         PerfumeDB perfume = perfumeJpaRepository.findById(request.getPerfumeid())
                 .orElseThrow(() -> new RuntimeException("Perfume no encontrado con ID: " + request.getPerfumeid()));
-
+        InventoryDB inventory = inventoryJpaRepository.findByPerfume_Id(request.getPerfumeid())
+                .orElseThrow(() -> new RuntimeException("Inventario no encontrado para el perfume con ID: " + request.getPerfumeid()));
+        if (inventory.getQuantity() < request.getQuantity()) {
+            throw new RuntimeException("Stock insuficiente. Stock disponible: " + inventory.getQuantity());
+        }
+        inventory.setQuantity(inventory.getQuantity() - request.getQuantity());
+        inventoryJpaRepository.save(inventory);
         PurchaseDB purchase = new PurchaseDB();
         purchase.setUserid(request.getUserid());
         purchase.setSellerid(request.getSellerid());
@@ -31,6 +35,8 @@ public class PurchaseService {
         purchase.setQuantity(request.getQuantity());
         purchase.setPrice(request.getPrice());
         purchase.setPurchasedate(LocalDateTime.now());
+
+
 
         return purchaseJpaRepository.save(purchase);
     }

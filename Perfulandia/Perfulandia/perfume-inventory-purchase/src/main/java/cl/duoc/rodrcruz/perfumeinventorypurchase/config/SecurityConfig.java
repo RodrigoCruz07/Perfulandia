@@ -14,10 +14,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions().disable())  // Para que funcione iframe del H2 Console
+                .headers(headers -> headers.frameOptions().disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(PathRequest.toH2Console()).permitAll() // Permite acceso a /h2-console sin autenticación
-                        .anyRequest().permitAll() // El resto requiere autenticación, o cambia a permitAll si quieres todo abierto
+                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }

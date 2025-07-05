@@ -35,21 +35,24 @@ class PurchaseControllerTest {
     void setUp() {
         testPurchaseDB = new PurchaseDB();
         testPurchaseDB.setId(1);
-        testPurchaseDB.setUserid("user123");
+        testPurchaseDB.setUserid(1);
+        testPurchaseDB.setSellerid(1);
         testPurchaseDB.setPerfumename("Chanel N°5");
         testPurchaseDB.setQuantity(2);
         testPurchaseDB.setPrice(120000);
         testPurchaseDB.setPurchasedate(LocalDateTime.now());
 
         testRequest = new PurchaseRequest();
-        testRequest.setUserid("usuario123");
-        testRequest.setPerfumeid("1");
+        testRequest.setUserid(1);
+        testRequest.setSellerid(1);
+        testRequest.setPerfumeid(1);
         testRequest.setQuantity(2);
         testRequest.setPrice(120000);
 
         testResponse = new PurchaseResponse(
                 1,
-                "user123",
+                3,
+                2,
                 "Chanel N°5",
                 2,
                 120000.0,
