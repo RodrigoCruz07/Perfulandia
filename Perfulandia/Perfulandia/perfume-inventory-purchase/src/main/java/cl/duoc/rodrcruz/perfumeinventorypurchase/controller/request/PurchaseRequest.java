@@ -9,7 +9,8 @@ import lombok.Setter;
 
 public class PurchaseRequest {
     private int userid;
-    private String perfumeid;
+    private Integer perfumeid;
     private Integer quantity;
     private double price;
+    private int sellerid;
 }

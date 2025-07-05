@@ -20,7 +20,7 @@ public class PerfumeService {
     }
     public PerfumeDB registerPerfume(Perfume perfume) {
         Optional<PerfumeDB> found = perfumeJpaRepository.findByNameAndBrand(perfume.getName(), perfume.getBrand());
-        if (found.isEmpty()) {
+        if (found.isPresent()) {
             return found.get();
         }
         PerfumeDB NewPerfumeDB = new PerfumeDB();

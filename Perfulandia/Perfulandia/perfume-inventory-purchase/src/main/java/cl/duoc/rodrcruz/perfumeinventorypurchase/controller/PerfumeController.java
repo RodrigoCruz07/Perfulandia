@@ -8,6 +8,7 @@ import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class PerfumeController {
     private PerfumeService perfumeService;
 
     @PostMapping
+
     public ResponseEntity<PerfumeResponse> registerPerfume(@RequestBody PerfumeRequest request) {
         Perfume perfume = convertRequest(request);
         PerfumeDB NewPerfumeDB = perfumeService.registerPerfume(perfume);
@@ -27,6 +29,7 @@ public class PerfumeController {
         return new ResponseEntity<>(perfumeResponse, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
+
     public ResponseEntity<PerfumeResponse> getPerfumeById(@PathVariable Integer id) {
         try {
             PerfumeDB perfumeDB = perfumeService.getPerfume(id);
@@ -38,6 +41,7 @@ public class PerfumeController {
         }
     }
     @PutMapping("/{id}")
+
     public ResponseEntity<PerfumeResponse> updatePerfume(@PathVariable Integer id, @RequestBody PerfumeRequest request) {
         try {
             Perfume perfumeModel = convertRequest(request);
@@ -49,6 +53,7 @@ public class PerfumeController {
         }
     }
     @DeleteMapping("/{id}")
+
     public ResponseEntity<Void> deletePerfume(@PathVariable Integer id) {
         boolean deleted = perfumeService.deletePerfume(id);
         if (deleted) {
@@ -58,6 +63,7 @@ public class PerfumeController {
         }
     }
     @GetMapping
+
     public ResponseEntity<List<PerfumeResponse>> getAllPerfumes() {
         List<PerfumeDB> perfumesDB = perfumeService.getAllPerfumes();
         List<PerfumeResponse> responses = perfumesDB.stream()

@@ -25,7 +25,7 @@ import java.util.List;
 
 @Service("sellerUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
-
+    private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
     @Autowired
     private SellerJpaRepository sellerJpaRepository;
 
@@ -38,8 +38,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         BCryptPasswordEncoder tempEncoder = new BCryptPasswordEncoder();
         boolean matchesDirectly = tempEncoder.matches(plainTextPasswordForTest, retrievedPassword);
 
+        String roleNameWithPrefix = "ROLE_" + seller.getRole().getName().toUpperCase();
+        GrantedAuthority authority = new SimpleGrantedAuthority(roleNameWithPrefix);
 
-        GrantedAuthority authority = new SimpleGrantedAuthority(seller.getRole().getName());
+        logger.info("Usuario '{}' cargado con rol: {}", seller.getEmail(), roleNameWithPrefix); // Log para depuración
 
         // Retorna un objeto User de Spring Security
         return new User(seller.getEmail(), seller.getPassword(), Collections.singletonList(authority));

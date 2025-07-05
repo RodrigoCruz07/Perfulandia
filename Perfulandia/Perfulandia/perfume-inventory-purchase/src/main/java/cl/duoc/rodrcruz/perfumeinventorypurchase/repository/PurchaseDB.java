@@ -17,7 +17,9 @@ public class PurchaseDB {
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     @Column(name="userid", nullable = false, updatable = false)
-    private String userid;
+    private int userid;
+    @Column(name="sellerid", nullable = false, updatable = false)
+    private int sellerid;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="perfumeid",nullable = false)
     private PerfumeDB perfume;

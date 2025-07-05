@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PurchaseResponse {
     private Integer id;
-    private String userId;
+    private int userId;
+    private int sellerid;
     private String perfumeName;
     private Integer quantity;
     private Double price;

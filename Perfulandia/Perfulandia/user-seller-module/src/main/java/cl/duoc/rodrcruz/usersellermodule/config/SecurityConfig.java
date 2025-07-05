@@ -61,7 +61,9 @@ public class SecurityConfig {
                         .requestMatchers("/h2-console/**").permitAll()
                         // 2. Permitir acceso público a los endpoints de autenticación y registro
                         .requestMatchers("/api/auth/**").permitAll()
-                        // 3. Cualquier otra solicitud DEBE estar autenticada
+                        .requestMatchers("/api/purchases/**").permitAll()
+                        .requestMatchers("/api/inventory/**").permitAll()
+                        .requestMatchers("/api/perfumes/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

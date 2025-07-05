@@ -1,5 +1,8 @@
 spring:
-
+  logging:
+    level: org.springframework.security=DEBUG
+    logging:
+      level: cl.duoc.rodrcruz=DEBUG
   application:
     name: moduleusers
   datasource:
@@ -36,3 +39,4 @@ jwt:
   secret: tu_secreto_muy_seguro_y_largo_aqui_cambialo_en_produccion_1234567890abcdef # ¡IMPORTANTE: Cambia este secreto!
   expiration:
     ms: 3600000
+

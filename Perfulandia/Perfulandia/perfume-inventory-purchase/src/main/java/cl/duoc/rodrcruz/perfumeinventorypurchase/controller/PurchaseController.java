@@ -58,10 +58,12 @@ public class PurchaseController {
         return new PurchaseResponse(
                 db.getId(),
                 db.getUserid(),
+                db.getSellerid(),
                 db.getPerfumename(),
                 db.getQuantity(),
                 db.getPrice(),
                 db.getPurchasedate()
+
         );
     }
 }

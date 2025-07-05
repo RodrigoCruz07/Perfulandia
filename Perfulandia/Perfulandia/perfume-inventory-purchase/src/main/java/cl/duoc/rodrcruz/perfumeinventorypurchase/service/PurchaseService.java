@@ -20,11 +20,12 @@ public class PurchaseService {
     private PerfumeJpaRepository perfumeJpaRepository;
 
     public PurchaseDB registerPurchase(PurchaseRequest request) {
-        PerfumeDB perfume = perfumeJpaRepository.findById(Integer.valueOf(request.getPerfumeid()))
+        PerfumeDB perfume = perfumeJpaRepository.findById(request.getPerfumeid())
                 .orElseThrow(() -> new RuntimeException("Perfume no encontrado con ID: " + request.getPerfumeid()));
 
         PurchaseDB purchase = new PurchaseDB();
-        purchase.setUserid(String.valueOf(request.getUserid()));
+        purchase.setUserid(request.getUserid());
+        purchase.setSellerid(request.getSellerid());
         purchase.setPerfume(perfume);
         purchase.setPerfumename(perfume.getName());
         purchase.setQuantity(request.getQuantity());
