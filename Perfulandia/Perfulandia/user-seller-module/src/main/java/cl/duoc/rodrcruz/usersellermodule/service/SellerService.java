@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.UUID;
+
 
 
 @Service
@@ -27,9 +27,9 @@ public class SellerService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error: ¡El email ya está en uso!");
         }
 
-        // 1. Usa la contraseña del RegisterRequest
+
         String rawPasswordFromRequest = registerRequest.getPassword();
-        // 2. Hashea esa contraseña
+
         String encodedPassword = passwordEncoder.encode(rawPasswordFromRequest);
 
         RoleDB sellerRole = roleJpaRepository.findByName(registerRequest.getRoleName())

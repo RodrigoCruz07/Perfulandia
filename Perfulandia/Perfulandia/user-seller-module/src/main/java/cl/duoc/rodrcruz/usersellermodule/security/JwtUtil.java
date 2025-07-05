@@ -17,33 +17,32 @@ import java.util.stream.Collectors;
 @Component
 public class JwtUtil {
 
-    // CAMBIA ESTO EN UN ENTORNO REAL. DEBERÍA LEERSE DE UNA PROPIEDAD EXTERNA (application.yml)
-    // Pero como lo omitimos por ahora, lo hardcodeamos temporalmente para que compile.
+
     private final String SECRET_KEY = "tu_super_secreto_para_jwt_aqui_debe_ser_largo_y_seguro_1234567890abcdef";
-    // CAMBIA ESTO EN UN ENTORNO REAL. DEBERÍA LEERSE DE UNA PROPIEDAD EXTERNA.
-    private final long EXPIRATION_TIME_MS = 3600000; // 1 hora en milisegundos
+
+    private final long EXPIRATION_TIME_MS = 3600000;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    // Extrae el nombre de usuario (subject) del token
+
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // Extrae la fecha de expiración del token
+
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    // Método genérico para extraer cualquier "claim" del token
+
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    // Extrae todos los "claims" del token
+
     private Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -52,7 +51,7 @@ public class JwtUtil {
                 .getBody();
     }
 
-    // Verifica si el token ha expirado
+
     private Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
@@ -60,7 +59,7 @@ public class JwtUtil {
     // Genera un token JWT para un UserDetails dado
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        // Añade los roles como claims al token (útil para autorización)
+
         claims.put("roles", userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList()));

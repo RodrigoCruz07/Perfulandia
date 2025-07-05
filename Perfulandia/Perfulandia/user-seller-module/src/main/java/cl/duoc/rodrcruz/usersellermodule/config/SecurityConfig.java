@@ -33,15 +33,15 @@ public class SecurityConfig {
         this.unauthorizedHandler = unauthorizedHandler;
         this.jwtAuthFilter = jwtAuthFilter;
     }
-    @Bean // <-- ¡¡¡AÑADE ESTE BEAN!!!
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean // Define el DaoAuthenticationProvider explícito
+    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(sellerUserDetailsService); // Usa tu UserDetailsService
-        authProvider.setPasswordEncoder(passwordEncoder()); // <-- ¡¡¡LLAMA AL MÉTODO DEL BEAN DIRECTAMENTE AQUÍ!!!
+        authProvider.setUserDetailsService(sellerUserDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
     @Bean
@@ -56,10 +56,10 @@ public class SecurityConfig {
                 .exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        // 1. Permitir acceso público a la consola H2 (¡MUY IMPORTANTE EL ORDEN!)
-                        // El '**' es crucial para incluir todos los recursos internos de la consola (CSS, JS, etc.)
+
+
                         .requestMatchers("/h2-console/**").permitAll()
-                        // 2. Permitir acceso público a los endpoints de autenticación y registro
+
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/purchases/**").permitAll()
                         .requestMatchers("/api/inventory/**").permitAll()
@@ -67,11 +67,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 );
 
-        // Añade nuestro filtro JWT antes del filtro de autenticación de usuario/contraseña de Spring Security
+
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        // Es importante deshabilitar los headers de protección de frames para H2-Console
-        // (La consola H2 usa Iframes y esto puede bloquearla)
+
+
         http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
 
 
