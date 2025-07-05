@@ -4,10 +4,10 @@ import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.InventoryJpaReposito
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeDB;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.repository.PerfumeJpaRepository;
 import cl.duoc.rodrcruz.perfumeinventorypurchase.controller.request.InventoryRequest;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,14 +21,14 @@ public class InventoryService {
 
     public InventoryDB registerInventory(InventoryRequest request) {
         PerfumeDB perfume = perfumeJpaRepository.findById(request.getPerfumeId())
-                .orElseThrow(() -> new RuntimeException("Perfume no encontrado con ID: " + request.getPerfumeId()));
+                .orElseThrow(() -> new EntityNotFoundException("Perfume no encontrado con ID: " + request.getPerfumeId()));
 
         InventoryDB inventory = new InventoryDB();
         inventory.setPerfume(perfume);
         inventory.setQuantity(request.getQuantity());
         inventory.setPrice(request.getPrice());
         inventory.setLocation(request.getLocation());
-        inventory.setLastRestockDate(LocalDateTime.now());
+        inventory.setDate(LocalDate.now());
 
         return inventoryJpaRepository.save(inventory);
     }

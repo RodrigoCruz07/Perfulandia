@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39f08747-fa9e-40b2-88a0-b3c84c6bf48e" name="Changes" comment="Se añade logica de purchase, inventory">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="39f08747-fa9e-40b2-88a0-b3c84c6bf48e" name="Changes" comment="Se añade PurchaControllerTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/request/InventoryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/request/InventoryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/request/PurchaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/request/PurchaseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/InventoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/InventoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/PerfumeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/PerfumeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/PurchaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/response/PurchaseResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/InventoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/repository/InventoryDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/service/PerfumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/java/cl/duoc/rodrcruz/perfumeinventorypurchase/service/PerfumeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/test/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/InventoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/test/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/InventoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/test/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/PurchaseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perfulandia/Perfulandia/perfume-inventory-purchase/src/test/java/cl/duoc/rodrcruz/perfumeinventorypurchase/controller/PurchaseControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/modulepurchase.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/modulepurchase.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/modulepurchase.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/modulepurchase.trace.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +31,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -37,7 +51,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -58,11 +72,12 @@
     "JUnit.PerfumeControllerTest.getPerfumeById.executor": "Coverage",
     "JUnit.PerfumeControllerTest.registerPerfume.executor": "Run",
     "JUnit.PerfumeInventoryPurchaseApplicationTests.executor": "Run",
+    "JUnit.PurchaseControllerTest.executor": "Run",
     "JUnit.PurchaseServiceTest.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "529",
-    "RequestMappingsPanelWidth1": "529",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -91,6 +106,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\haxks\IdeaProjects\Perfulandia\Perfulandia\Perfulandia\perfume-inventory-purchase\src\main\java\cl\duoc\rodrcruz\perfumeinventorypurchase\repository" />
     </key>
@@ -108,7 +126,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PerfumeControllerTest">
+  <component name="RunManager" selected="Spring Boot.PerfumeInventoryPurchaseApplication">
     <configuration name="InventoryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="perfume-inventory-purchase" />
       <extension name="coverage">
@@ -171,16 +189,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerfumeInventoryPurchaseApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PurchaseControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="perfume-inventory-purchase" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.*" />
+          <option name="PATTERN" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase" />
-      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.PerfumeInventoryPurchaseApplicationTests" />
+      <option name="PACKAGE_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.rodrcruz.perfumeinventorypurchase.controller.PurchaseControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -211,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PurchaseControllerTest" />
         <item itemvalue="JUnit.PerfumeControllerTest" />
         <item itemvalue="JUnit.PerfumeControllerTest.getPerfumeById" />
         <item itemvalue="JUnit.PerfumeControllerTest.registerPerfume" />
         <item itemvalue="JUnit.InventoryControllerTest" />
-        <item itemvalue="JUnit.PerfumeInventoryPurchaseApplicationTests" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +261,7 @@
       <workItem from="1751501208803" duration="17039000" />
       <workItem from="1751522739704" duration="16023000" />
       <workItem from="1751559855753" duration="345000" />
-      <workItem from="1751564343308" duration="2015000" />
+      <workItem from="1751564343308" duration="22335000" />
     </task>
     <task id="LOCAL-00001" summary="Se añade logica de purchase, inventory">
       <option name="closed" value="true" />
@@ -269,7 +287,23 @@
       <option name="project" value="LOCAL" />
       <updated>1751563610392</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se añade InventoryController">
+      <option name="closed" value="true" />
+      <created>1751566699852</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1751566699852</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Se añade PurchaControllerTest">
+      <option name="closed" value="true" />
+      <created>1751569664833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1751569664833</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +322,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se añade logica de purchase, inventory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se añade logica de purchase, inventory" />
+    <MESSAGE value="Se añade InventoryController" />
+    <MESSAGE value="Se añade PurchaControllerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se añade PurchaControllerTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

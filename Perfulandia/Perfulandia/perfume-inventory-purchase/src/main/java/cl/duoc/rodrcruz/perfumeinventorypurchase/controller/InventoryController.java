@@ -57,7 +57,7 @@ public class InventoryController {
                 db.getQuantity(),
                 db.getPrice(),
                 db.getLocation(),
-                db.getLastRestockDate()
+                db.getDate()
         );
     }
 }

@@ -12,7 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,7 +48,7 @@ class InventoryControllerTest {
         savedInventory.setQuantity(request.getQuantity());
         savedInventory.setPrice(request.getPrice());
         savedInventory.setLocation(request.getLocation());
-        savedInventory.setLastRestockDate(LocalDateTime.now());
+        savedInventory.setDate(LocalDate.now());
 
         when(inventoryService.registerInventory(request)).thenReturn(savedInventory);
 
@@ -63,7 +64,7 @@ class InventoryControllerTest {
         assertEquals(savedInventory.getQuantity(), body.getQuantity());
         assertEquals(savedInventory.getPrice(), body.getPrice());
         assertEquals(savedInventory.getLocation(), body.getLocation());
-        assertNotNull(body.getLastRestockDate());
+        assertNotNull(body.getDate());
 
         verify(inventoryService, times(1)).registerInventory(request);
     }
@@ -83,7 +84,7 @@ class InventoryControllerTest {
         inventoryDB.setQuantity(8);
         inventoryDB.setPrice(8000.0);
         inventoryDB.setLocation("Valparaiso");
-        inventoryDB.setLastRestockDate(LocalDateTime.now());
+        inventoryDB.setDate(LocalDate.now());
 
         when(inventoryService.getInventoryById(id)).thenReturn(inventoryDB);
 
@@ -118,7 +119,7 @@ class InventoryControllerTest {
         inv1.setQuantity(15);
         inv1.setPrice(9000);
         inv1.setLocation("Concepcion");
-        inv1.setLastRestockDate(LocalDateTime.now());
+        inv1.setDate(LocalDate.now());
 
         InventoryDB inv2 = new InventoryDB();
         inv2.setId(2);
@@ -126,7 +127,7 @@ class InventoryControllerTest {
         inv2.setQuantity(10);
         inv2.setPrice(15000);
         inv2.setLocation("La Serena");
-        inv2.setLastRestockDate(LocalDateTime.now());
+        inv2.setDate(LocalDate.now());
 
         List<InventoryDB> mockList = Arrays.asList(inv1, inv2);
 

@@ -1,6 +1,5 @@
 package cl.duoc.rodrcruz.perfumeinventorypurchase.controller.response;
 import lombok.*;
-
 @Getter
 @Setter
 @Builder

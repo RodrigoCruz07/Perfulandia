@@ -1,6 +1,7 @@
 package cl.duoc.rodrcruz.perfumeinventorypurchase.repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +22,10 @@ public class InventoryDB {
     private Integer quantity;
     @Column(name = "price",nullable = false)
     private double price;
-    @Column(name = "location", updatable = false, nullable = false)
+    @Column(name = "location", nullable = false)
     private String location;
     @Column(name = "date", nullable = false)
-    private LocalDateTime lastRestockDate;
+    private LocalDate date;
+
 
 }
